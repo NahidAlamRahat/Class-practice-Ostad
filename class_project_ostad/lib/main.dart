@@ -50,7 +50,6 @@ class HomeActivity extends StatelessWidget {
       //     ),
 
 
-
       body:  Center(
         child: InkWell(
           child: Text('text button'),

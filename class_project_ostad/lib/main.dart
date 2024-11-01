@@ -13,6 +13,7 @@ class Hello extends StatelessWidget {  @override
   Widget build(BuildContext context) {
 
   return MaterialApp(
+    debugShowCheckedModeBanner: false,
     home: HomeActivity(),
     );
 
@@ -22,251 +23,136 @@ class Hello extends StatelessWidget {  @override
 class HomeActivity extends StatelessWidget {
 
   CustomAlertDialog alertDialog = CustomAlertDialog();
+  TextEditingController firstController = TextEditingController();
+  TextEditingController secondController = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  List<String> recentsList = ['01234567890','01987654321','01234569810','01890765322','01324589098',
+    '01234567890','01987654321','01234569810','01890765322','01324589098'];
+
+  List<String> subtitleList = ['+8801234567890 Oct 28 R...','+8801987654321 Oct 25 D...','+8801234569810 Oct 20 I...',
+    '+8801890765322 Sep 26 R...','+8801324589098 Sep 20 D...','+8801234567890 Sep 18 I...','+8801987654321 Sep 15 R...',
+    '+8801234569810 Aug 28 D...', '+8801890765322 Aug 22 I...','+8801324589098 Aug 20 R...'];
+
+  List<String> contactsList = ['Nahid','Fariha','Alam','Sultana','Rahat','Afrin','kobi','nodi','tara','Akash'];
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-
-      // body: Center(
-      //   child: Text('Hello Word this is a first app in ostad live class project ',
-      //     textAlign: TextAlign.center,
-      //     style: TextStyle(
-      //       color: Colors.black,
-      //       fontSize: 30,
-      //         // letterSpacing: 14,
-      //       wordSpacing: 5,
-      //       decoration: TextDecoration.overline,
-      //       overflow: TextOverflow.ellipsis
-      //   ),
-      //
-      //     ),
-      //
-      // ),
-
-      // body:
-      //     Image.asset('asset/image/emoji.jpg',
-      //       width: 50,
-      //       height: 50,
-      //       fit: BoxFit.cover,
-      //       alignment: Alignment.center,
-      //
-      //     ),
-
-      appBar: AppBar(
-        title: Text('Module 7, class 1-2-3'),
-        backgroundColor: Colors.green,
-
-      ),
-
-     /* body: Center(
-        child: Column(
-          children: [
-            
-            SizedBox(height: 10,),
-            
-            ElevatedButton(onPressed: (){
-              print('this is a Elevated Button');
-
-            },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  foregroundColor: Colors.white,
-                  elevation: 50,
-                  shadowColor:Colors.green,
-                alignment: Alignment.topLeft,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                  side: BorderSide(color: Colors.black,width: 3),
-                  maximumSize: Size(100, 100),
-                  textStyle: TextStyle(fontSize: 20,fontStyle: FontStyle.italic,fontWeight: FontWeight.bold,
-                  overflow: TextOverflow.ellipsis,
-                    decoration: TextDecoration.lineThrough,
-                    decorationColor: Colors.black,
-
-                  ),
-                  padding: EdgeInsets.only(top: 20),
-
-                ),
-                child: Text('Tap Now')),
-
-            SizedBox(height: 10,),
-            
-            OutlinedButton(onPressed: (){
-              print('this is a OutLine Button');
-            },
-
-
-                child: Text('Outline Button')),
-
-            SizedBox(height: 10,),
-
-            TextButton(onPressed: (){
-              print('this is a Text Button');
-
-            }, child: Text('Text Button')),
-
-            InkWell(
-              onDoubleTap: () {
-                print('Noemal Text to Button');
-              },
-              child: Text('Normal Text'),
-            )
-            
-          ],
-        ),
-      ),*/
-
-/*
-body: Center(
-  child: Column(
-    // mainAxisAlignment: MainAxisAlignment.center,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      ElevatedButton(onPressed: (){
-       showModalBottomSheet(context: context,
-
-           // isScrollControlled: true, // eta dile ekdom full-screen hoye  jabe.
-          showDragHandle: true,
-           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-
-           builder: (builder){
-           return Column(
-             children: [
-             Row(
-               mainAxisAlignment: MainAxisAlignment.center,
-               children: [
-                 Text('tile')
-               ],
-             ),
-               Divider(
-                 thickness: 4,
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+         backgroundColor: Colors.white,
+         title:
+          TabBar(
+            dividerHeight: 0,
+              unselectedLabelColor: Colors.black,
+            labelColor: Colors.green,
+              tabs: [
+               Text('Recents',
+               style: TextStyle(
+                 fontSize: 20,
+                 decoration: TextDecoration.none
                ),
-               Text('message')
-             ],
-           );
-         }
-           );
-
-
-        
-
-      },
-          
-          child: Text('Tap')),
-    ],
-  ),
-),
-*/
-
-   /* body: Padding(
-      padding: const EdgeInsets.all(16),
-      child: TextField(
-        decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-          labelStyle: TextStyle(color: Colors.black),
-          suffixIcon: Icon(Icons.person),
-          prefixIcon: Icon(Icons.call),
-          fillColor: Colors.amberAccent,
-          filled: true,
-          hintText: 'number',
-
-
-          labelText: 'input Now',
+               ),
+                Text('Contacts',
+                  style: TextStyle(
+                      fontSize: 20
+                  ),
+                )
+          ],
+               indicator: BoxDecoration(),
+          ),
         ),
-         maxLength: 250,
-         // obscureText: true, //
-
-      ),
-    ),*/
 
 
-bottomNavigationBar: NavigationBar(
-  elevation: 80,
-selectedIndex: 1,
-  indicatorShape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(4)),
-  shadowColor: Colors.black,
-  indicatorColor: Colors.cyan,
-
-  destinations: [
-    NavigationDestination(icon: Icon(Icons.home),label: 'Home', ),
-    NavigationDestination(icon: Icon(Icons.email),label: 'Message', ),
-    NavigationDestination(icon: Icon(Icons.person),label: 'person', )
-
-]
-),
-
-
-      drawer: Drawer(
-        elevation: 80,
-
-        child: DrawerHeader(
-            child: Text('Nahid Alam Rahat'),
-          decoration:BoxDecoration(borderRadius: BorderRadius.circular(20))
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: FloatingActionButton(
+            backgroundColor: Colors.green,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)),
+            elevation: 10,
+            child: Icon(Icons.dialpad,
+            color: Colors.white,
+            ),
+            onPressed: (){},
+          ),
         ),
+
+        body:
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    height: 40,
+                    child: TextFormField(
+
+                      decoration:InputDecoration(
+
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide:  BorderSide.none),
+                        prefixIcon: Icon(Icons.search, size: 18,),
+                        fillColor: Colors.grey[300],
+                        filled: true,
+                        hintText: '126 contacts',
+                        hintStyle: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontSize: 15,
+                          // fontStyle: FontStyle.normal
+                        )
+                      ) ,
+                    ),
+                  ),
+                ),
+
+                Expanded(
+                  child: TabBarView(
+                      children: [
+
+                    ListView.builder(
+                      itemCount: recentsList.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          tileColor: Colors.white,
+                          title: Text(recentsList[index]),
+                          subtitle: Text(subtitleList[index],
+                           overflow: TextOverflow.ellipsis ,
+                          ),
+
+                          leading: CircleAvatar(
+                              backgroundColor: Colors.grey[300],
+                              child: Icon(Icons.person,color: Colors.white,)),
+                          trailing:  Icon(Icons.keyboard_arrow_right,color: Colors.grey,),
+
+                        );
+
+                      },),
+
+                    ListView.builder(
+                      itemCount: contactsList.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          tileColor: Colors.white,
+
+
+                          title: Text(contactsList[index]),
+                          subtitle: Text(subtitleList[index]),
+                          leading: CircleAvatar(child: Icon(Icons.person)),
+
+                        );
+
+                      },)
+
+                  ]),
+                ),
+              ],
+            ),
+
       ),
-
-
-/*
-      body: Scrollbar(
-        thickness: 10,
-    interactive: true,
-
-
-    child: SingleChildScrollView(
-
-        child:Column(
-        children: [
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-          Text('Hello Word'),
-
-        ],
-      ),
-      ),
-
-
-      ),
-*/
-
-
-    body: ListView.builder(
-      itemCount: 100,
-        itemBuilder: (context, index) {
-          return Text('Hello World $index');
-        },
-
-    ),
-
-
-
     ); // Scaffold end.
 
   }

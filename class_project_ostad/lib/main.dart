@@ -2,7 +2,7 @@ import 'package:class_project_ostad/rec_mian.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
+// ListView, Gridview, ListTile, Form, GlobalKey, Key
 
 void main(){
   runApp(Hello());
@@ -86,27 +86,45 @@ class HomeActivity extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    height: 40,
-                    child: TextFormField(
+                  child:  Form(
 
-                      decoration:InputDecoration(
+                      key: formKey,
+                      child: SizedBox(
+                        height: 40,
+                        child: TextFormField(
+                            autovalidateMode: AutovalidateMode.onUserInteraction,
+                            decoration:InputDecoration(
 
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20),
-                              borderSide:  BorderSide.none),
-                        prefixIcon: Icon(Icons.search, size: 18,),
-                        fillColor: Colors.grey[300],
-                        filled: true,
-                        hintText: '126 contacts',
-                        hintStyle: TextStyle(
-                          fontStyle: FontStyle.normal,
-                          fontSize: 15,
-                          // fontStyle: FontStyle.normal
-                        )
-                      ) ,
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    borderSide:  BorderSide.none),
+                              prefixIcon: Icon(Icons.search_sharp, size: 20, color: Colors.grey,),
+                              fillColor: Colors.grey[300],
+                              filled: true,
+                              hintText: '126 contacts',
+                              hintFadeDuration: Duration(seconds: 2) ,
+                              hintStyle: TextStyle(
+
+                                fontStyle: FontStyle.normal,
+                                fontSize: 15,
+
+                                fontWeight: FontWeight.normal,
+                                color: Colors.grey
+                              ),
+                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                                contentPadding: EdgeInsets.fromLTRB(0, 10, 0, 10)
+                            ) ,
+
+                          validator:(String? value){
+                            if(value==null || value.isEmpty){
+                              return 'Enter a value';
+                            }
+                            
+                          },
+
+                        ),
+                      ),
                     ),
-                  ),
                 ),
 
                 Expanded(
@@ -128,11 +146,16 @@ class HomeActivity extends StatelessWidget {
                               child: Icon(Icons.person,color: Colors.white,)),
                           trailing:  Icon(Icons.keyboard_arrow_right,color: Colors.grey,),
 
+                          onTap: (){
+                            print('onTap $index');
+                          },
                         );
 
                       },),
 
-                    ListView.builder(
+                   /* GridView.builder(
+                      gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2) ,
                       itemCount: contactsList.length,
                       itemBuilder: (context, index) {
                         return ListTile(
@@ -141,11 +164,15 @@ class HomeActivity extends StatelessWidget {
 
                           title: Text(contactsList[index]),
                           subtitle: Text(subtitleList[index]),
-                          leading: CircleAvatar(child: Icon(Icons.person)),
+                          leading: CircleAvatar(child: Icon(Icons.person),
+                          ),
+                          onTap: (){
+                            print('onTap $index');
+                          },
 
                         );
 
-                      },)
+                      },)*/
 
                   ]),
                 ),

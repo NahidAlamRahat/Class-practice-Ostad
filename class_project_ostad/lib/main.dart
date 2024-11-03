@@ -2,7 +2,7 @@ import 'package:class_project_ostad/rec_mian.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-// ListView, Gridview, ListTile, Form, GlobalKey, Key
+// // ListView.Separator, Container
 
 void main(){
   runApp(Hello());
@@ -81,7 +81,7 @@ class HomeActivity extends StatelessWidget {
           ),
         ),
 
-        body:
+       /* body:
             Column(
               children: [
                 Padding(
@@ -131,14 +131,14 @@ class HomeActivity extends StatelessWidget {
                   child: TabBarView(
                       children: [
 
-                    ListView.builder(
+                    ListView.separated(
                       itemCount: recentsList.length,
                       itemBuilder: (context, index) {
                         return ListTile(
                           tileColor: Colors.white,
                           title: Text(recentsList[index]),
                           subtitle: Text(subtitleList[index],
-                           overflow: TextOverflow.ellipsis ,
+                            overflow: TextOverflow.ellipsis ,
                           ),
 
                           leading: CircleAvatar(
@@ -150,10 +150,22 @@ class HomeActivity extends StatelessWidget {
                             print('onTap $index');
                           },
                         );
+                      }, separatorBuilder: (BuildContext context, int index) {
+                        return Divider(
+                          height: 10,
+                          thickness: 10,
+                          color: Colors.amber,
+                          endIndent: 20,
+                          indent: 20,
 
-                      },),
+                        );
+                    },),
 
-                   /* GridView.builder(
+
+
+
+
+                    GridView.builder(
                       gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2) ,
                       itemCount: contactsList.length,
@@ -172,12 +184,34 @@ class HomeActivity extends StatelessWidget {
 
                         );
 
-                      },)*/
+                      },)
 
                   ]),
                 ),
               ],
             ),
+*/
+
+        body: Row(
+          children: [
+            Container(
+              height: 200,
+              width: 200,
+              margin: EdgeInsets.all(20),
+
+              decoration: BoxDecoration(
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    color: Colors.black
+                  )
+                ],
+                color: Colors.amber,
+
+              ),
+            ),
+          ],
+        ),
+
 
       ),
     ); // Scaffold end.

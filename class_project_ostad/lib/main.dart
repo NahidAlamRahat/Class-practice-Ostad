@@ -1,4 +1,5 @@
 import 'package:class_project_ostad/rec_mian.dart';
+import 'package:class_project_ostad/screen1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ void main() {
 }
 
 class Hello extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,6 +25,9 @@ class Hello extends StatelessWidget {
 }
 
 class HomeActivity extends StatelessWidget {
+
+  final String username;
+  HomeActivity({this.username=''});
   CustomAlertDialog alertDialog = CustomAlertDialog();
   TextEditingController firstController = TextEditingController();
   TextEditingController secondController = TextEditingController();
@@ -78,8 +83,13 @@ class HomeActivity extends StatelessWidget {
 
 
       body: Center(
-        child: ElevatedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => CustomAlertDialog(),));},
-            child: Text('Go to profile')),
+        child: Column(
+          children: [
+            Text(username),
+            ElevatedButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => Screen1(),));},
+                child: Text('Go to Screen1')),
+          ],
+        ),
       ),
 
 

@@ -14,11 +14,7 @@ class Screen2 extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
             onPressed: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Screen3(),
-                  ));
+            Navigator.pushNamed(context, '/screen3');
             },
             child: Text('Home Screen')),
       ),

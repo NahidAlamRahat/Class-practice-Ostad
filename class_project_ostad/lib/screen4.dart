@@ -16,12 +16,7 @@ class Screen4 extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
             onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => HomeActivity(username: 'All Screen clear',),
-                  ),
-                  (protected) => false);
+              Navigator.pushNamedAndRemoveUntil(context, '/home', (predicate)=>false);
             },
             child: const Text('go to home')),
       ),

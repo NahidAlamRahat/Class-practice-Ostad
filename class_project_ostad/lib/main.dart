@@ -77,7 +77,9 @@ class HomeActivity extends StatelessWidget {
 
             Padding(
               padding: const EdgeInsets.all(8.0),
+
               child: Stack(
+
                 children: [
                   Container(
                     color: Colors.amber,

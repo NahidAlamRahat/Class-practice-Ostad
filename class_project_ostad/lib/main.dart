@@ -6,12 +6,7 @@ import 'package:class_project_ostad/screen4.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// Navigation
-
-/// Route mane holo Screen
-// Route to Route Navigation (Screen to Screen)
-// Navigator
-//StatelessWidget vs StatefulWidget
+/// ThemeData ,  Stack
 
 void main() {
   runApp(Hello());

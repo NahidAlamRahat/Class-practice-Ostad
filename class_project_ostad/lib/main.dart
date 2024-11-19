@@ -29,6 +29,18 @@ class Hello extends StatelessWidget {
         '/screen3': (context) => Screen3(),
         '/screen4': (context) => Screen4(),
       },
+
+      theme: ThemeData(
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            elevation: 20,
+            foregroundColor: Colors.pink,
+            side: BorderSide(color: Colors.black),
+
+          )
+        )
+      ),
+
       debugShowCheckedModeBanner: false,
       home: HomeActivity(),
     );
@@ -57,8 +69,44 @@ class HomeActivity extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                  Navigator.pushNamed(context, '/screen1');
+
                 },
-                child: const Text('Go to StatefulWidget')),
+                child: const Text('Go to StatefulWidget'),
+
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Stack(
+                children: [
+                  Container(
+                    color: Colors.amber,
+                    width: 100,
+                    height:100 ,
+                  ),
+
+                  Container(
+                    color: Colors.blue,
+                    width: 80,
+                    height:80 ,
+                  ),
+
+                  Positioned(
+                    
+                    width: 20,
+                    child: Container(
+                      color: Colors.pink,
+                      width: 60,
+                      height:60 ,
+                    ),
+                  )
+                ],
+              ),
+            )
+
+
+
+
           ],
         ),
       ),

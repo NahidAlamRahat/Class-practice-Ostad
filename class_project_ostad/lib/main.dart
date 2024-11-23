@@ -6,7 +6,8 @@ import 'package:class_project_ostad/screen4.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// Navigation
+/// Named Navigation, Stateful Widget.
+
 
 /// Route mane holo Screen
 // Route to Route Navigation (Screen to Screen)
